@@ -34,7 +34,8 @@ total_votes = len(voter_IDs)
 """ 
 * using most_common() method from collections module.
 * most_commin(): Returns a list of the n most common elements and 
-* their counts from the most common to the least 
+* their counts from the most common to the least. 
+ ! source: (https://docs.python.org/3/py-modindex.html)
 """
 election_data = collections.Counter(candidates).most_common()
 
