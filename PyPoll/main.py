@@ -10,6 +10,7 @@ def display_list(a_list):
 
 
 path_to_file = os.path.join('Resources', 'election_data.csv')
+path_to_text_file = os.path.join('election_results.txt')
 
 voter_IDs = []
 counties = []
@@ -60,3 +61,17 @@ print("----------------------------------")
 # * the candidate with most votes
 print(f"Winner: {election_data[0][0]}")
 print("----------------------------------")
+
+# * Print output to text file
+with open(path_to_text_file, 'w') as text_file:
+    text_file.write("Election Results\n")
+    text_file.write("----------------------------------\n")
+    text_file.write(f"Total Votes: {total_votes}\n")
+    text_file.write("----------------------------------\n")
+
+    for idx in range(0, len(percent_votes)):
+        text_file.write(
+            f"{election_data[idx][0]}: {percent_votes[idx]} % ({election_data[idx][1]})\n")
+    text_file.write("----------------------------------\n")
+    text_file.write(f"Winner: {election_data[0][0]}\n")
+    text_file.write("----------------------------------")
