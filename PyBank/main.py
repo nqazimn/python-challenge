@@ -25,18 +25,16 @@ with open(path_to_file, newline='', encoding="utf8") as csvfile:
         budget_profit_losses.append(int(row[1]))
 
 for idx in range(1, len(budget_profit_losses)):
-    # print(idx)
     changes.append(budget_profit_losses[idx] - budget_profit_losses[idx-1])
-    # display_list(budget_dates)
-    # display_list(budget_profit_losses)
 
-# display_list(changes)
 print(f"Total Months: {len(budget_dates)}")
 print(f"Total: ${sum(budget_profit_losses)}")
 print(f"Average change: ${round(stats.mean(changes),2)}")
 
-print(max(changes))
-print(budget_dates[changes.index(max(changes))+1])
+# * Print max value and location of max value
+max_date = budget_dates[changes.index(max(changes))+1]
+print("Greatest Increase in Profits: " + max_date + f" $({max(changes)})")
 
-print(min(changes))
-print(budget_dates[changes.index(min(changes))+1])
+# * Print min value and location of min value
+min_date = budget_dates[changes.index(min(changes))+1]
+print("Greatest Decrease in Profits: " + min_date + f" $({min(changes)})")
