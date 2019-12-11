@@ -1,5 +1,6 @@
 import os
 import csv
+import collections
 
 
 def display_list(a_list):
@@ -26,10 +27,35 @@ with open(path_to_file, newline='', encoding="utf8") as csvfile:
         counties.append(row[1])
         candidates.append(row[2])
 
+# Total votes is length of any of the 3 lists obtained from csv file
+total_votes = len(voter_IDs)
+
+# * Using collections module to analyze the stored data
+""" 
+* using most_common() method from collections module.
+* most_commin(): Returns a list of the n most common elements and 
+* their counts from the most common to the least 
+"""
+election_data = collections.Counter(candidates).most_common()
+
+percent_votes = []
+for candidate in election_data:
+    temp = round(candidate[1]/total_votes*100.0, 2)
+    temp_str = ("{0:0.3f}".format(temp))
+    percent_votes.append(temp_str)
+
 # * Print output on terminal
 print("Election Results")
 print("----------------------------------")
-print(f"Total Votes: {len(voter_IDs)}")
+print(f"Total Votes: {total_votes}")
 print("----------------------------------\n")
 
-#print(f"Average Change: ${round(stats.mean(changes),2)}")
+for idx in range(0, len(percent_votes)):
+    print(
+        f"{election_data[idx][0]}: {percent_votes[idx]} % ({election_data[idx][1]})")
+
+print("----------------------------------")
+# * Since election_data is sorted the first element will be
+# * the candidate with most votes
+print(f"Winner: {election_data[0][0]}")
+print("----------------------------------")
