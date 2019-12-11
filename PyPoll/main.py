@@ -12,8 +12,8 @@ def display_list(a_list):
 path_to_file = os.path.join('Resources', 'election_data.csv')
 path_to_text_file = os.path.join('election_results.txt')
 
-voter_IDs = []
-counties = []
+voter_IDs = []  # ? do we actually need to store this?
+counties = []  # ? Same as above.do we need this?
 candidates = []
 
 with open(path_to_file, newline='', encoding="utf8") as csvfile:
@@ -24,17 +24,18 @@ with open(path_to_file, newline='', encoding="utf8") as csvfile:
 
  # Read and store data
     for row in csvreader:
+        # ? Do we actually need to save voter_IDs/counties?
         voter_IDs.append(int(row[0]))
         counties.append(row[1])
         candidates.append(row[2])
 
 # Total votes is length of any of the 3 lists obtained from csv file
-total_votes = len(voter_IDs)
+total_votes = len(candidates)
 
 # * Using collections module to analyze the stored data
 """ 
 * using most_common() method from collections module.
-* most_commin(): Returns a list of the n most common elements and 
+* most_common(): Returns a list of the n most common elements and 
 * their counts from the most common to the least. 
  ! source: (https://docs.python.org/3/py-modindex.html)
 """
