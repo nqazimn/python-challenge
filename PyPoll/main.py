@@ -26,4 +26,10 @@ with open(path_to_file, newline='', encoding="utf8") as csvfile:
         counties.append(row[1])
         candidates.append(row[2])
 
-# print(len(voter_IDs))
+# * Print output on terminal
+print("Election Results")
+print("----------------------------------")
+print(f"Total Votes: {len(voter_IDs)}")
+print("----------------------------------\n")
+
+#print(f"Average Change: ${round(stats.mean(changes),2)}")
