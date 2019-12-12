@@ -5,6 +5,7 @@ import collections
 
 def display_list(a_list):
     # Print items of a list on the terminal
+    # Used for print debugging
     for item in a_list:
         print(item)
 
@@ -12,8 +13,8 @@ def display_list(a_list):
 path_to_file = os.path.join('Resources', 'election_data.csv')
 path_to_text_file = os.path.join('election_results.txt')
 
-voter_IDs = []  # ? do we actually need to store this?
-counties = []  # ? Same as above.do we need this?
+# voter_IDs = []  # ? We dont actually need to store this
+# counties = []  # ? Same as above. We dont actually need to store counties
 candidates = []
 
 with open(path_to_file, newline='', encoding="utf8") as csvfile:
@@ -24,9 +25,10 @@ with open(path_to_file, newline='', encoding="utf8") as csvfile:
 
  # Read and store data
     for row in csvreader:
-        # ? Do we actually need to save voter_IDs/counties?
-        voter_IDs.append(int(row[0]))
-        counties.append(row[1])
+        # We dont actually need to save voter_IDs/counties
+        # because we are not doing any analysis on them
+        # voter_IDs.append(int(row[0]))
+        # counties.append(row[1])
         candidates.append(row[2])
 
 # Total votes is length of any of the 3 lists obtained from csv file
