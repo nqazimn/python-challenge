@@ -10,6 +10,10 @@ def display_list(a_list):
         print(item)
 
 
+def print_dashes():
+    print("----------------------------------")
+
+
 path_to_file = os.path.join('Resources', 'election_data.csv')
 path_to_text_file = os.path.join('election_results.txt')
 
@@ -51,19 +55,21 @@ for candidate in election_data:
 
 # * Print output on terminal
 print("Election Results")
-print("----------------------------------")
+
+print_dashes()
 print(f"Total Votes: {total_votes}")
-print("----------------------------------\n")
+print_dashes()
 
 for idx in range(0, len(percent_votes)):
     print(
         f"{election_data[idx][0]}: {percent_votes[idx]} % ({election_data[idx][1]})")
 
-print("----------------------------------")
+
+print_dashes()
 # * Since election_data is sorted the first element will be
 # * the candidate with most votes
 print(f"Winner: {election_data[0][0]}")
-print("----------------------------------")
+print_dashes()
 
 # * Print output to text file
 with open(path_to_text_file, 'w') as text_file:
